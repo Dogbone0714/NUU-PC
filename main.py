@@ -40,11 +40,12 @@ postData = {
 }
 # 根據抓包資訊 構造表單
 headers = {
-'Accept': 'text/html,application/xhtml xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-'Accept-Language': 'zh-CN,zh;q=0.8',
+'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+'Accept-Encoding':' gzip, deflate, br',
+'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
 'Connection': 'keep-alive',
 'Content-Type': 'application/x-www-form-urlencoded',
-'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36',
+'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
 }
 # 根據抓包資訊 構造headers
 data = urllib.urlencode(postData)
@@ -53,8 +54,8 @@ request = urllib2.Request(PostUrl, data, headers)
 # 構造request請求
 try:
 response = opener.open(request)
-result = response.read().decode('gb2312')
-# 由於該網頁是gb2312的編碼，所以需要解碼
+result = response.read().decode('base64')
+# 由於該網頁是base64的編碼，所以需要解碼
 print result
 # 列印登入後的頁面
 except urllib2.HTTPError, e:
